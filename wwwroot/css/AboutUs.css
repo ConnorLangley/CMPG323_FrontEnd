@@ -1,0 +1,76 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    padding:0px;
+    margin:0px;
+}
+body{
+    background-color:lightgrey;
+
+}
+.about-1{
+    margin:30px;
+    padding:5px;
+}
+.about-1 h1{
+    text-align:center;
+    color:#fff;
+    font-weight;
+}
+.about-1 p{
+    text-align:center;
+    padding:3px;
+    color:black;
+}
+.about-item{
+    margin-bottom:20px;
+    margin-top:20px;
+    background-color:white;
+    padding:80px;
+    box-shadow:0 0 9px rgba(0,0,0,0.4);
+}
+.about-item i{
+    font-size:43px;
+    margin:0;
+
+}
+.about-item h3{
+    font-size:25px;
+    margin-bottom:10px;
+
+}
+    .about-item hr {
+        width: 46px;
+        height: 3px;
+        background-color: purple;
+        margin:0 auto;
+        border:none;
+    }
+
+    .about-item p{
+        margin-top:20px;
+    }
+    .about-item:hover{
+        background-color:purple;
+
+    }
+    .about-item:hover i,
+    .about-item:hover h3,
+    .about-item:hover p{
+        color:#fff;
+        transition: all 400ms ease-in-out;
+    }
+
+    .about-item:hover hr{
+        background-color:#fff
+    }
+    .about-item:hover i{
+        transform:translateY(-20px);
+    }
+        
+    footer{
+        background: #212226
+        padding-box:20px;
+    }
+    footer p{
+        color:#fff;
+    }

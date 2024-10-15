@@ -1,0 +1,89 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    margin:4px;
+    
+    box-sizing:border-box;
+    font-family:'Oswald',sans-serif;
+    color:rebeccapurple;
+}
+section{
+    min-height:auto;
+    background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)) url();
+    background-repeat: no-repeat;
+    background-size:cover;
+    margin:auto;
+    
+}
+.container{
+    width:100%;
+    margin:auto;
+}
+nav{
+    height:50px;
+    margin:auto;
+}
+nav h1{
+    float:left;
+    line-height: 50px;
+    font-size: 25px;
+    margin:auto;
+    color:rebeccapurple;
+}
+nav ul{
+    float:right;
+    line-height:30px;
+
+}
+nav ul li{
+    display: inline-block;
+    list-style:none;
+    padding:inherit;
+    color:rebeccapurple;
+
+}
+nav ul li a{
+    color:rebeccapurple;
+    text-decoration:none;
+    text-transform:uppercase;
+    border-radius: 5px;
+    padding:4px 5px;
+
+}
+nav ul li a:hover{
+    background-color:darkgrey;
+    transition: 0.5s ease;
+    padding:3px;
+
+}
+nav ul li .nav-link active{
+    background-color:darkgrey;
+    padding:1px;
+    margin:3px;
+}
+.nav-link{
+    display:block;
+    padding:4px;
+    margin:3px;
+    color:rebeccapurple;
+}
+
+.article{
+    width: 50%;
+    margin:auto;
+    text-align:center;
+    transform:translateY(25vh);
+}
+.article h1{
+    font-size:36px;
+    color:black;
+    letter-spacing:1.5px;
+    font-weight:800;
+    margin-bottom:25px;
+}
+
+.article p{
+    font-size:18px;
+    color:rebeccapurple;
+    line-height:1.5;
+    margin-bottom: 50px;
+}

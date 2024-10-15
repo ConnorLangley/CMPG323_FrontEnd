@@ -1,0 +1,207 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    margin:4px;
+    padding:5px;
+    box-sizing:border-box;
+    font-family:'Oswald',sans-serif;
+
+}
+head{
+    display:flex;
+    justify-content:left;
+    padding:10px;
+    margin:5px;
+
+}
+.a{
+    color:black;
+    text-decoration:none;
+}
+.a:hover{
+    text-decoration:underline;
+    color:mediumpurple;
+}
+body{
+    min-height:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+header{
+    font-size:36px;
+
+}
+
+section {
+    min-height: auto;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)) url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+nav {
+    height: 50px;
+    margin: auto;
+}
+
+    nav h1 {
+        float: left;
+        line-height: 50px;
+        font-size: 30px;
+        margin: auto;
+        color: rebeccapurple;
+    }
+
+    nav ul {
+        float: right;
+        line-height: 16px;
+    }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            padding: inherit;
+            color: rebeccapurple;
+        }
+
+            nav ul li a {
+                color: rebeccapurple;
+                text-decoration: none;
+                text-transform: uppercase;
+                border-radius: 5px;
+                padding: 4px 5px;
+                font-size:16px;
+            }
+
+                nav ul li a:hover {
+                    background-color: darkgrey;
+                    transition: 0.5s ease;
+                    padding: 3px;
+                }
+
+            nav ul li .nav-link active {
+                background-color: darkgrey;
+                padding: 1px;
+                margin: 3px;
+            }
+
+.nav-link {
+    display: block;
+    padding: 4px;
+    margin: 3px;
+    color: rebeccapurple;
+}
+
+.form-group{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:4px;
+    resize:vertical;
+    cursor:pointer;
+}
+.form-group:hover{
+    box-shadow:purple rgba(0,0,0,0.6);
+}
+input[type = submit]{
+    background-color:purple;
+    color:white;
+    padding:12px 20px;
+    border:1px solid black;
+    border-radius:4px;
+    cursor:pointer;
+    float:right;
+}
+.input[type=submit]:hover{
+    background-color:lightslategrey;
+}
+.input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    resize: vertical;
+}
+.label{
+    padding:12px 12px 12px 0;
+    display:inline-block;
+}
+.form{
+    border-radius:5px;
+    background-color:lightgrey;
+    padding:20px;
+}
+.form:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+.button {
+    width: 100%;
+    height: 30px;
+    background: purple;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+}
+    .button:hover {
+        background: #000;
+        transform: scale(1.05,1);
+    }
+
+input[type=file]{
+    float:left;
+    padding:10px;
+    cursor:pointer;
+    background-color:grey;
+    color:black;
+    border-radius:5px;
+}
+    input[type=file]:hover {
+        background-color:rebeccapurple;
+        color:ghostwhite;
+    }
+    .select{
+        position:relative;
+        padding:5px;
+        cursor:pointer;
+        background-color:grey;
+        color:black;
+
+    }
+    .select select{
+        display:none;
+    }
+    .select:hover{
+
+    }
+.select .select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+.select option {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.input[type="checkbox"]
+{
+    color:black;
+    padding:6px;
+    block-size:100px;
+    border-radius:3px;
+
+}
+.input[type="checkbox"]:hover
+{
+    border:7px solid purple;
+}
+       

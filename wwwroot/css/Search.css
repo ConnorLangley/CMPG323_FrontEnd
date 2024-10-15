@@ -1,0 +1,107 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+*{
+    margin:4px;
+    padding:5px;
+    justify-content:center;
+    font-family:"Oswald",sans-serif;
+}
+
+.star-rating {
+    direction: rtl;
+    font-size: 2em;
+    unicode-bidi: bidi-override;
+}
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        color: #ccc;
+        cursor: pointer;
+    }
+
+    .star-rating input:checked ~ label {
+        color: #f5b301;
+    }
+
+    .star-rating input:hover ~ label {
+        color: #f5b301;
+    }
+
+    .star-rating label:hover ~ label {
+        color: #f5b301;
+    }
+
+    .input[type=text]{
+        width:100%;
+        padding:12px 20px;
+        margin:8px 0;
+        box-sizing:border-box;
+        border-radius:5px;
+
+    }
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+}
+
+section {
+    min-height: auto;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)) url();
+}
+
+h1 {
+    float: left;
+    line-height: 80px;
+    font-size: 35px;
+    font-size: inline;
+    color: rebeccapurple;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table tr:nth-child(even) {
+        background-color: darkgrey;
+    }
+
+    table tr:hover {
+        background-color: orchid;
+    }
+
+    table tr th {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        background-color: purple;
+    }
+
+    table tr td {
+        padding: 9px;
+        text-align: left;
+    }
+
+.button {
+    background-color: purple;
+    border: ridge;
+    color: white;
+    padding: inherit;
+    text-align: center;
+    text-decoration: auto;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.table tbody {
+    width: 100%;
+    border: none;
+    align-items: flex-start;
+}
