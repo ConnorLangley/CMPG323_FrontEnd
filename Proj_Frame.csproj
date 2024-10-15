@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\AboutUs.cshtml.cs" />
+    <Content Include="Pages\Analytics.cshtml.cs" />
+    <Content Include="Pages\Contributors.cshtml.cs" />
+    <Content Include="Pages\CreateAccount.cshtml.cs" />
+    <Content Include="Pages\Error.cshtml.cs" />
+    <Content Include="Pages\FAQ.cshtml.cs" />
+    <Content Include="Pages\FileUpload.cshtml.cs" />
+    <Content Include="Pages\Index.cshtml.cs" />
+    <Content Include="Pages\Moderate.cshtml.cs" />
+    <Content Include="Pages\OERs.cshtml.cs" />
+    <Content Include="Pages\PasswordReset.cshtml.cs" />
+    <Content Include="Pages\Search.cshtml.cs" />
+    <Content Include="Pages\SelfDirectedLearning.cshtml.cs" />
+    <Content Include="Pages\SubjectView.cshtml.cs" />
+    <Content Include="Pages\UserManagement.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\Landing.css" />
+    <None Include="wwwroot\images\stockCImage.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\images\" />
+  </ItemGroup>
+	
+
+</Project>
