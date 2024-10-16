@@ -1,37 +1,50 @@
 ﻿@page
-@model Proj_Frame.Pages.SearchModel
+@model Proj_Frame.Pages.Pages_Search
 @{
 }
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta name="viewport" content="width = device-width,initial-scale=1.0" />
-    <link rel="stylesheet" href="~/css/Search.css.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/Search.css" />
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
-
-
-
 <body>
-    <header>Search</header>
-    <form method="get">
-        <input type="text" name="searchTerm" placeholder="Enter keywords to search" value="@Request.Query["searchTerm"]" />
-        <input type="text" name="searchTerm" placeholder="Enter grade to search" value="@Request.Query["searchTerm"]" />
-        <input type="text" name="searchTerm" placeholder="Enter a minimum to search" value="@Request.Query["searchTerm"]" />
+    <header>Search
+        <section>
+            <div class="container">
+                <nav>
+                    <h1>Welcome</h1>
+                    <ul>
+                        <li class="nav-item">
+                            <a asp-page="/FileUpload" class="nav-link">Contribute</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a asp-page="/FAQ" class="nav-link">FAQ</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+    </header>
+    <form id="searchForm">
+        <input type="text" name="keywords" placeholder="Enter keywords to search" />
+        <input type="text" name="grade" placeholder="Enter grade to search" />
+        <input type="text" name="minimum" placeholder="Enter a minimum rating to search" />
         <button type="submit">Search</button>
     </form>
-    <!--at if-->
-    <!--(Model.NoResultsFound)-->
-    {
-    <p>No files found for the subject</p>
-    }
 
-    else
-    {
+    <p id="noResultsMessage" style="display: none;">No files found for the subject</p>
+
     <p>List of files:</p>
-    <table class="table">
+    <table class="table" id="fileListTable">
         <thead>
             <tr>
                 <th>File Name</th>
@@ -39,37 +52,149 @@
             </tr>
         </thead>
         <tbody>
-            <!--at foreach--> <!--(var file in Model.FileList)-->
-            {
-            <tr>
-                <td></td>
-                <td>
-                    <!-- Download button -->
-                    <form method="post" asp-page-handler="Download" asp-route-fileName="" style="display:inline;">
-                        <button type="submit" class="btn btn-primary">Download</button>
-                    </form>
-
-                    <!-- Report -->
-                    <form method="post" asp-page-handler="Delete" asp-route-fileName="" style="display:inline;">
-                        <button type="submit" onclick="return confirm('Are you sure you want to delete this file?');" class="btn btn-danger">Delete</button>
-                    </form>
-                    <!--Rate-->
-                    <div class="star-rating">
-                        <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
-                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
-                    </div>
-
-
-                </td>
-            </tr>
-            }
+            <!-- Dynamic file list will be inserted here -->
         </tbody>
     </table>
 
-    }
-</body>
+    <script>
+        $(document).ready(function () {
+            // Fetch and display all files when the page loads
+            loadAllFiles();
 
+            // Handle search form submission
+            $("#searchForm").submit(async function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                // Get form data
+                const formData = {
+                    searchQuery: $("input[name='keywords']").val(),
+                    grade: $("input[name='grade']").val(),
+                    minRating: $("input[name='minimum']").val(),
+                };
+
+                try {
+                    // Call the Search API using Axios
+                    const response = await axios.get('/Search/GetFiles', { params: formData });
+                    const data = response.data;
+
+                    if (data.length === 0) {
+                        // No files found
+                        $("#noResultsMessage").show();
+                        $("#fileListTable tbody").empty(); // Clear previous results
+                    } else {
+                        // Files found
+                        $("#noResultsMessage").hide();
+                        $("#fileListTable tbody").empty(); // Clear previous results
+                        data.forEach(file => {
+                            $("#fileListTable tbody").append(`
+                                <tr>
+                                    <td>${file.fileName}</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="downloadFile('${file.fileName}')">Download</button>
+                                        <button class="btn btn-danger" onclick="reportFile(${file.File_ID})">Report</button>
+                                        <div class="star-rating">
+                                            <input type="radio" id="star5-${file.fileName}" name="rating-${file.fileName}" value="5" onclick="rateFile(${file.File_ID}, 5)"><label for="star5-${file.fileName}">★</label>
+                                            <input type="radio" id="star4-${file.fileName}" name="rating-${file.fileName}" value="4" onclick="rateFile(${file.File_ID}, 4)"><label for="star4-${file.fileName}">★</label>
+                                            <input type="radio" id="star3-${file.fileName}" name="rating-${file.fileName}" value="3" onclick="rateFile(${file.File_ID}, 3)"><label for="star3-${file.fileName}">★</label>
+                                            <input type="radio" id="star2-${file.fileName}" name="rating-${file.fileName}" value="2" onclick="rateFile(${file.File_ID}, 2)"><label for="star2-${file.fileName}">★</label>
+                                            <input type="radio" id="star1-${file.fileName}" name="rating-${file.fileName}" value="1" onclick="rateFile(${file.File_ID}, 1)"><label for="star1-${file.fileName}">★</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `);
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error fetching files:', error);
+                }
+            });
+        });
+
+        // Function to load all files
+        async function loadAllFiles() {
+            try {
+                // Call the endpoint to get all files using Axios
+                const response = await axios.get('Search/executeGetFiles');
+                const data = response.data;
+
+                if (data.length === 0) {
+                    $("#noResultsMessage").show();
+                    $("#fileListTable tbody").empty(); // Clear previous results
+                } else {
+                    $("#noResultsMessage").hide();
+                    $("#fileListTable tbody").empty(); // Clear previous results
+                    data.forEach(file => {
+                        $("#fileListTable tbody").append(`
+                            <tr>
+                                <td>${file.fileName}</td>
+                                <td>
+                                    <button class="btn btn-primary" onclick="downloadFile('${file.fileName}')">Download</button>
+                                    <button class="btn btn-danger" onclick="reportFile(${file.File_ID})">Report</button>
+                                    <div class="star-rating">
+                                        <input type="radio" id="star5-${file.fileName}" name="rating-${file.fileName}" value="5" onclick="rateFile(${file.File_ID}, 5)"><label for="star5-${file.fileName}">★</label>
+                                        <input type="radio" id="star4-${file.fileName}" name="rating-${file.fileName}" value="4" onclick="rateFile(${file.File_ID}, 4)"><label for="star4-${file.fileName}">★</label>
+                                        <input type="radio" id="star3-${file.fileName}" name="rating-${file.fileName}" value="3" onclick="rateFile(${file.File_ID}, 3)"><label for="star3-${file.fileName}">★</label>
+                                        <input type="radio" id="star2-${file.fileName}" name="rating-${file.fileName}" value="2" onclick="rateFile(${file.File_ID}, 2)"><label for="star2-${file.fileName}">★</label>
+                                        <input type="radio" id="star1-${file.fileName}" name="rating-${file.fileName}" value="1" onclick="rateFile(${file.File_ID}, 1)"><label for="star1-${file.fileName}">★</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                }
+            } catch (error) {
+                
+            }
+        }
+
+        // Report a file to the API
+        function reportFile(fileId) {
+            axios.post(`/Search/ReportFile`, { fileId: fileId })
+                .then(function (response) {
+                    alert("File reported successfully.");
+                })
+                .catch(function (error) {
+                    
+                    alert("Error reporting file.");
+                });
+        }
+
+        // Rate a file through the API using Axios
+        async function rateFile(fileId, rating) {
+            try {
+                const response = await axios.post(`/Search/rate`, {
+                    fileId: fileId,
+                    rating: rating
+                });
+                alert("Rating submitted successfully.");
+            } catch (error) {
+                alert("Error when rating file");
+                
+            }
+        }
+
+        // Download a file
+        async function downloadFile(fileName) {
+            try {
+                const response = await axios.get(`/Search/DownloadFile?fileName=${fileName}`, {
+                    responseType: 'blob'
+                });
+
+                if (response.status === 200) {
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', fileName);
+                    document.body.appendChild(link);
+                    link.click();
+                    link.parentNode.removeChild(link);
+                } else {
+                    displayStatusMessage(`Error: ${response.data}`, 'error');
+                }
+            } catch (error) {
+                displayStatusMessage(`Error downloading the file: ${error.response?.data ?? error.message}`, 'error');
+            }
+        }
+    </script>
+</body>
 </html>

@@ -70,7 +70,7 @@ table {
 }
 
     table tr:nth-child(even) {
-        background-color: darkgrey;
+        background-color: lightgrey;
     }
 
     table tr:hover {

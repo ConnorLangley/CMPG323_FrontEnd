@@ -37,12 +37,20 @@
       "PackagePath": "staticwebassets\\css\\ModerationStyle.css"
     },
     {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\css\\OER.css",
+      "PackagePath": "staticwebassets\\css\\OER.css"
+    },
+    {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\css\\PasswordReset.css",
       "PackagePath": "staticwebassets\\css\\PasswordReset.css"
     },
     {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\css\\Search.css",
       "PackagePath": "staticwebassets\\css\\Search.css"
+    },
+    {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\css\\SelfDirectedLearning.css",
+      "PackagePath": "staticwebassets\\css\\SelfDirectedLearning.css"
     },
     {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\css\\site.css",
@@ -53,12 +61,28 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\images\\Andrew.jpg",
+      "PackagePath": "staticwebassets\\images\\Andrew.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\images\\Connor.jpg",
+      "PackagePath": "staticwebassets\\images\\Connor.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\images\\Jan.jpg",
+      "PackagePath": "staticwebassets\\images\\Jan.jpg"
+    },
+    {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\images\\stockCImage.jpeg",
       "PackagePath": "staticwebassets\\images\\stockCImage.jpeg"
     },
     {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\js\\FAQ.js",
       "PackagePath": "staticwebassets\\js\\FAQ.js"
+    },
+    {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\js\\search.js",
+      "PackagePath": "staticwebassets\\js\\search.js"
     },
     {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\js\\site.js",
@@ -291,6 +315,10 @@
     {
       "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Connor\\OneDrive\\Desktop\\Proj_Frame\\wwwroot\\resources\\frontpage.pdf",
+      "PackagePath": "staticwebassets\\resources\\frontpage.pdf"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Proj_Frame.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -16,19 +16,39 @@
 
 
 <body>
-    <header>Search</header>
+    <header>Subject View
+        <section>
+            <div class="container">
+                <nav>
+                    <h1>Welcome</h1>
+                    <ul>
+                        <li class="nav-item">
+                            <a asp-page="/Search" class="nav-link">Search</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a asp-page="/FAQ" class="nav-link">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/FileUpload" class="nav-link">Contribute</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+    </header>
     <form method="get">
         <input type="text" name="searchTerm" placeholder="Enter subject" value="@Request.Query["searchTerm"]" />
         
         <button type="submit">Search</button>
     </form>
-    <!--at if-->
-    <!--(Model.NoResultsFound)-->
+    
+  
     {
     <p>No files found for the subject</p>
     }
 
-    else
+    
     {
     <p>List of files:</p>
     <table class="table">
@@ -39,7 +59,7 @@
             </tr>
         </thead>
         <tbody>
-            <!--at foreach--> <!--(var file in Model.FileList)-->
+            
             {
             <tr>
                 <td></td>
