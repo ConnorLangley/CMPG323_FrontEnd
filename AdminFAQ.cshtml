@@ -1,0 +1,233 @@
+﻿@page
+@model Proj_Frame.Pages.ModerateFAQModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Moderate FAQs</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #6a0dad;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .navigation a {
+                text-decoration: none;
+                padding: 12px 25px;
+                background-color: #6a0dad;
+                color: white;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-size: 1.1em;
+                margin: 5px;
+                display: inline-block;
+            }
+
+                .navigation a:hover {
+                    background-color: #4e0d7d;
+                }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+            .tab-buttons button {
+                padding: 12px 20px;
+                background-color: #6a0dad;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+                margin: 5px;
+                transition: background-color 0.3s;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+                .tab-buttons button:hover {
+                    background-color: #4e0d7d;
+                }
+
+                .tab-buttons button.active {
+                    background-color: #4e0d7d;
+                }
+
+        .form-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #6a0dad;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            button:hover {
+                background-color: #4e0d7d;
+            }
+    </style>
+</head>
+<body>
+    <h2>Moderate FAQs</h2>
+
+    <div class="navigation">
+        <a href="/FAQ">Back to FAQ</a>
+    </div>
+
+    <div class="tab-buttons">
+        <button id="create-tab" class="active" onclick="showSection('create')">Create FAQ</button>
+        <button id="delete-tab" onclick="showSection('delete')">Delete FAQ</button>
+    </div>
+
+    <div id="create-section" class="form-section">
+        <h3 style="color: #6a0dad;">Create FAQ</h3>
+        <label for="question">Question:</label>
+        <textarea id="question" placeholder="Enter the question here"></textarea>
+        <label for="answer">Answer:</label>
+        <textarea id="answer" placeholder="Enter the answer here"></textarea>
+        <button onclick="createFAQ()">Create FAQ</button>
+    </div>
+
+    <div id="delete-section" class="form-section">
+        <h3 style="color: #6a0d7d;">Delete FAQ</h3>
+        <label for="faqId">FAQ ID (for Delete):</label>
+        <input type="number" id="faqId" placeholder="Enter FAQ ID to delete" />
+        <button onclick="deleteFAQ()">Delete FAQ</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show the create section by default
+            showSection('create');
+        });
+
+        function showSection(section) {
+            const createSection = document.getElementById('create-section');
+            const deleteSection = document.getElementById('delete-section');
+            const createTab = document.getElementById('create-tab');
+            const deleteTab = document.getElementById('delete-tab');
+
+            if (section === 'create') {
+                createSection.style.display = 'block';
+                deleteSection.style.display = 'none';
+                createTab.classList.add('active');
+                deleteTab.classList.remove('active');
+            } else if (section === 'delete') {
+                createSection.style.display = 'none';
+                deleteSection.style.display = 'block';
+                createTab.classList.remove('active');
+                deleteTab.classList.add('active');
+            }
+        }
+
+        function createFAQ() {
+            const question = document.getElementById('question').value.trim();
+            const answer = document.getElementById('answer').value.trim();
+
+            if (!question || !answer) {
+                alert('Please fill in both the question and answer fields.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('Question_Desc', question);
+            formData.append('Answer', answer);
+
+            fetch('/api/FAQ', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to create FAQ');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('FAQ created successfully');
+                    window.location.href = '/FAQ';
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+        }
+
+        function deleteFAQ() {
+            const faqId = document.getElementById('faqId').value.trim();
+
+            if (!faqId) {
+                alert('Please provide a valid FAQ ID to delete.');
+                return;
+            }
+
+            fetch(`/api/FAQ/${faqId}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete FAQ');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('FAQ deleted successfully');
+                    window.location.href = '/FAQ';
+                })
+                .catch(error => {
+                    alert('Error: ' + error.message);
+                });
+        }
+    </script>
+</body>
+</html>
