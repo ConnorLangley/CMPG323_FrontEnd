@@ -19,10 +19,7 @@
                     <div class="container">
                      <nav>
                      <h1>Welcome</h1>
-                     <ul>
-                         <li class="nav-item">
-                             <a asp-page="/Index" class="nav-link">Home</a>
-                        </li>
+                     <ul>                        
                         <li class="nav-item active">
                             <a asp-page="/FAQ" class="nav-link">FAQ</a>
                         </li>
@@ -37,18 +34,18 @@
     <form method="post" enctype="multipart/form-data" class="border p-4 rounded bg-light">
         <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter the subject of the file" required>
+            <input type="text" id="subject" name="Subject" class="form-control" placeholder="Enter the subject of the file" required>
         </div>
 
         <div class="form-group">
             <label for="year">Year</label>
-            <input type="number" id="year" name="Grade" class="form-control" placeholder="Enter the year" required>
+            <input type="number" id="year" name="Year" class="form-control" placeholder="Enter the year" required>
         </div>
 
         <div class="form-group">
            
             <label for="options">Choose an option:</label>
-            <select name="options" id="options" required>
+            <select name="keywords" id="Keywords" required>
             <option value="1">Test</option>
             <option value="2">assignment</option>
             <option value="3">Summary</option>
@@ -56,7 +53,7 @@
             
             </select>
         <label for="agree">
-            <input type="checkbox" id="agree" name="agree" required>Memo
+            <input type="checkbox" id="agree" name="agree">Memo
         </label>
 
         </div>
@@ -71,11 +68,39 @@
             <label for="uploadedFile">Choose File (PDF, Word)</label>
             <input type="file" id="uploadedFile" name="uploadedFile" class="form-control-file" accept=".pdf,.doc,.docx" required>
         </div>
-
-        <button type="submit" class="btn btn-primary">Upload</button>
+      
+        <button type="submit" class="btn btn-primary" id="uploadButton">Upload</button>
+      
+        
     </form>
         <div class="linkToFaq">
             <a href="../Pages/FAQ.cshtml">FAQ</a>
         </div>
+        <script>
+            document.getElementById('uploadButton').addEventListener('click', async function () {
+            const form = document.getElementById('fileUploadForm');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/Upload/UploadFile', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    // Get the response as plain text
+                    const errorMessage = await response.text();
+                    document.getElementById('statusMessage').innerText = Error: ${errorMessage};
+                } else {
+                    const result = await response.text();
+                    document.getElementById('statusMessage').innerText = result;
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error); // Log the fetch error to the console for debugging
+                document.getElementById('statusMessage').innerText = "An error occurred while uploading the file: ${error.message}";
+            }
+        });
+
+    </script>
     </body>
 </html>

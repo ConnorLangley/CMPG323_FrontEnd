@@ -8,38 +8,90 @@
         <title>Contributors</title>
        <meta charset="utf-8"/>
        <meta name="viewport" content="width = device-width,initial-scale =1.0"/>
-       <link rel="stylesheet" type="text/css" href = ""/>
+       <link rel="stylesheet" type="text/css" href = "~/css/Contributors.css"/>
     </head>
 
     <body>
+    <header>
         <section>
             <div class="container">
-                <h1>Connor Langley</h1>
-                <img src="Connor.jpg" alt="Connor" class="image" />
-             <div class="overlay">
-                <div>class="text">Connor langey</div>
-             </div>
-                           
-              
-            </div>
-            <div class="article">
-                <h1>Andrew le Roux</h1>
-                <img src="Andrew.jpg" alt="Andrew" class="image"/>
-            <div class="overlay">
-                <div>class="text">Andrew le Roux</div>
-            </div>
-                
-            </div>
-            <div class="article">
-                <h1>Jan Greyling</h1>
-                <img src="Jan.jpg" alt="Jan" class="image"/>
-                <div class="overlay">
-                 <div>class="text">Jan Greyling</div>
-                </div>
-                
-            </div>
+                <nav>
+                    <h1>Contributors</h1>
+                    <ul>
+                        <li class="nav-item">
+                            <a asp-page="/Index" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a asp-page="/Search" class="nav-link">Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/SubjectView" class="nav-link">Subjects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/Moderate" class="nav-link">Moderate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/FileUpload" class="nav-link">Upload</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/FAQ" class="nav-link">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/Login" class="nav-link active">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-page="/CreateAccount" class="nav-link">Create Account</a>
+                        </li>
 
+
+                    </ul>
+                </nav>
+                
+            </div>
         </section>
+    </header>
+
+        <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="~/images/Connor.jpg" alt="Connor" style="width:33%">
+                <div class="container">
+                    <h2>Connor</h2>
+                    <p class="title">Contributor</p>
+                    <p>Frontend creator</p>
+                    <p>https://github.com/ConnorLangley</p>
+                    
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="~/images/Andrew.jpg" alt="Andrew" style="width:33%">
+                <div class="container">
+                    <h2>Andrew</h2>
+                    <p class="title">Contributors</p>
+                    <p>Backend creator</p>
+                    <p>https://github.com/Andrew-le-Roux</p>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="~/images/Jan.jpg" alt="Jan" style="width:33%">
+                <div class="container">
+                    <h2>Jan</h2>
+                    <p class="title">Designer</p>
+                    <p>Backend Creator</p>
+                    <p>https://github.com/Jan-NWU</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
     </body>
 </html>
