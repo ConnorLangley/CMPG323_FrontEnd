@@ -1,79 +1,11 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-*{
-    padding:0px;
-    margin:0px;
-}
-body{
-    background-color:lightgrey;
 
+* {
+    margin: 4px;
+    box-sizing: border-box;
+    font-family: 'Oswald',sans-serif;
+    color: rebeccapurple;
 }
-.about-1{
-    margin:30px;
-    padding:5px;
-}
-.about-1 h1{
-    text-align:center;
-    color:#fff;
-    font-weight;
-}
-.about-1 p{
-    text-align:center;
-    padding:3px;
-    color:black;
-}
-.about-item{
-    margin-bottom:20px;
-    margin-top:20px;
-    background-color:white;
-    padding:80px;
-    box-shadow:0 0 9px rgba(0,0,0,0.4);
-}
-.about-item i{
-    font-size:43px;
-    margin:0;
-
-}
-.about-item h3{
-    font-size:25px;
-    margin-bottom:10px;
-
-}
-    .about-item hr {
-        width: 46px;
-        height: 3px;
-        background-color: purple;
-        margin:0 auto;
-        border:none;
-    }
-
-    .about-item p{
-        margin-top:20px;
-    }
-    .about-item:hover{
-        background-color:purple;
-
-    }
-    .about-item:hover i,
-    .about-item:hover h3,
-    .about-item:hover p{
-        color:#fff;
-        transition: all 400ms ease-in-out;
-    }
-
-    .about-item:hover hr{
-        background-color:#fff
-    }
-    .about-item:hover i{
-        transform:translateY(-20px);
-    }
-        
-    footer{
-        background: #212226
-        padding-box:20px;
-    }
-    footer p{
-        color:#fff;
-    }
 
 section {
     min-height: auto;
@@ -139,3 +71,51 @@ nav {
     margin: 3px;
     color: rebeccapurple;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.container {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    ul li {
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+
+
